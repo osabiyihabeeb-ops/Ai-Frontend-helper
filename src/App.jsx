@@ -171,7 +171,11 @@ export default function App() {
             <input placeholder="Your Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
             <input placeholder="Email" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
             <textarea placeholder={`Hi, I am ${name} and I want...`} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
-            <button type="submit">Send Message</button>
+           <button type="button" onClick={() => {
+         const text = `Hi! I'm ${form.name} (${form.email}). Message: ${form.message}`;
+          window.open(`https://wa.me/2348093680851?text=${encodeURIComponent(text)}`, '_blank');
+          alert('Opening WhatsApp - your message is ready to send!');
+        }}>Send Message</button>
           </form>
         )}
       </section>
