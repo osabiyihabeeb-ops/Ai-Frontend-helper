@@ -12,7 +12,8 @@ export default function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [history, setHistory] = useState(() => JSON.parse(localStorage.getItem("aiHistory") || "[]"));
-
+  const [expandedId, setExpandedId] = useState(null);
+  
   useEffect(() => { localStorage.setItem("aiUser", name); }, [name]);
   useEffect(() => { localStorage.setItem("aiHistory", JSON.stringify(history)); }, [history]);
 
@@ -50,7 +51,7 @@ export default function App() {
    const text = data.choices?.[0]?.message?.content;
       if (!text) throw new Error(data.error?.message || "No result"); 
       setAiResult(text + "\n\n✅ Online AI Mode - Powered by Groq (like OpenAI) - Free for you!");
-      setHistory([{ prompt, type: aiType, result: text.slice(0, 200), time: new Date().toLocaleTimeString() }, ...history].slice(0, 5));
+      setHistory([{ prompt, type: aiType, result: text, time: new Date().toLocaleTimeString() }, ...history]);
     } catch (e) {
       setAiResult("❌ API Error: " + e.message + "\nCheck your Gemini key is correct.");
     }
@@ -156,11 +157,17 @@ export default function App() {
       </section>
 
       <section className="history" id="history">
-        <h3> history - Last 5 Generations for {name}</h3>
+        <h3> history - All Generations for {name} ({history.length} total)</h3>
         {history.length === 0 && <p>No history yet. Generate something!</p>}
         {history.map((h, i) => (
-          <div key={i} className="history-item"><b>{h.type}:</b> {h.prompt} <span>({h.time})</span><p>{h.result}...</p></div>
-        ))}
+        <div key={i} className="history-item" onClick={() => setExpandedId(expandedId === i ? null : i)} style={{cursor: 'pointer'}}>
+           <b>{h.type}:</b> {h.prompt} <span>{h.time}</span>
+           <p>{expandedId === i ? h.result : h.result.substring(0, 150) + '...'}</p>
+           <span style={{color: '#7c3aed', fontWeight: 'bold', fontSize: 13}}>
+            {expandedId === i ? '▲ Click to collapse' : '▼ Click to see full answer'}
+           </span>
+       </div>
+       })}
         {history.length > 0 && <button onClick={() => setHistory([])}>Clear History</button>}
       </section>
 
