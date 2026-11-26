@@ -22,14 +22,22 @@ export default function App() {
     setAiResult("");
     setAiImages([]);
 
-    const fullPrompt = aiType === "hero"
-      ? `Write a catchy hero headline and 1 sentence description for a website about: ${prompt}. Personalize it for ${name}.`
-      : aiType === "card"
-      ? `Write 3 short card titles and descriptions for a website about: ${prompt}. For user ${name}.`
-      : aiType === "form"
-      ? `Write a friendly call-to-action and form heading for a website about: ${prompt}. For user ${name}.`
-      : `Give 5 creative website ideas for: ${prompt}. For user ${name}.`;
-
+   const fullPrompt = aiType === "code"
+  ? `Write real, working, complete frontend code for: ${prompt}. Use HTML/CSS/JS. For user ${name}. Return code in a code block with comments.`
+  : aiType === "poem"
+  ? `Write a beautiful, complete, real poem about: ${prompt}. For user ${name}.`
+  : aiType === "novel"
+  ? `Write an engaging novel/story chapter about: ${prompt}. With characters, dialogue, and emotion. For user ${name}.`
+  : aiType === "text"
+  ? `Write headlines, descriptions and captions for: ${prompt}. For user ${name}.`
+  : aiType === "hero"
+  ? `Write a catchy hero headline and 1 sentence description for a website about: ${prompt}. Personalize it for ${name}.`
+  : aiType === "card"
+  ? `Write 3 short card titles and descriptions for a website about: ${prompt}. For user ${name}.`
+  : aiType === "form"
+  ? `Write a friendly call-to-action and form heading for a website about: ${prompt}. For user ${name}.`
+  : `Give 5 creative website ideas for: ${prompt}. For user ${name}.`;
+    
     try {
    const res = await fetch("/api/generate", {
   method: "POST",
