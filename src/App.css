@@ -28,7 +28,7 @@ h2 { color: #333; }
 .form-section input, .form-section textarea { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 10px; }
 .form-section button { background: #7c3aed; color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; width: 100%; }
 .success { background: #dcfce7; padding: 16px; border-radius: 10px; text-align: center; }
-.welcome { max-width: 400px; margin: 100px auto; text-align: center; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.welcome { max-width: 400px; margin: 100px auto; text-align: center; background: white; color: #333; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 .welcome input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin: 12px 0; }
 .welcome button { background: #7c3aed; color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; width: 100%; }
 footer { text-align: center; padding: 20px; color: #888; }
