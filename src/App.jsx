@@ -167,7 +167,7 @@ export default function App() {
             {expandedId === i ? '▲ Click to collapse' : '▼ Click to see full answer'}
            </span>
        </div>
-       })}
+       ))}
         {history.length > 0 && <button onClick={() => setHistory([])}>Clear History</button>}
       </section>
 
