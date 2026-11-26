@@ -22,7 +22,9 @@ export default function App() {
     setAiResult("");
     setAiImages([]);
 
-   const fullPrompt = aiType === "code"
+   const fullPrompt = aiType === "chat"
+  ? `You are a friendly, funny, helpful AI friend like Meta AI. Have a natural conversation. The user said: ${prompt}. Answer naturally, be warm, ask them a follow-up question at the end to keep the conversation going. Remember their name is ${name}.`
+  : aiType === "code"
   ? `Write real, working, complete frontend code for: ${prompt}. Use HTML/CSS/JS. For user ${name}. Return code in a code block with comments.`
   : aiType === "poem"
   ? `Write a beautiful, complete, real poem about: ${prompt}. For user ${name}.`
@@ -110,6 +112,7 @@ export default function App() {
 
         <div className="ai-controls">
           <select value={aiType} onChange={e => setAiType(e.target.value)}>
+            <option value="chat">💬 Chat - Ask Anything / Talk to Me</option>
             <option value="code">💻 Code - Real HTML/CSS/JS</option>
             <option value="poem">🌹 Poem - Real Poem</option>
             <option value="novel">📖 Novel / Story</option>
