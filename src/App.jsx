@@ -74,7 +74,12 @@ export default function App() {
   if (!name) {
     return (
       <div className="welcome">
-        <h1>🤖 AI Frontend Helper</h1>
+        <div style={{ textAlign: 'center', lineHeight: 1.1 }}>
+        <div style={{ fontSize: 55 }}>🤖</div>
+        <h1 style={{ fontSize: 42, margin: 0, lineHeight: 1.1, fontWeight: 800 }}>
+          AI Frontend<br />Helper
+        </h1>
+      </div>
         <p>Enter your name to personalize your experience:</p>
         <input placeholder="Your Name" value={tempName} onChange={e => setTempName(e.target.value)} />
         <button onClick={() => tempName && setName(tempName)}>Continue →</button>
