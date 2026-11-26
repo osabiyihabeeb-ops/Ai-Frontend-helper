@@ -124,6 +124,13 @@ export default function App() {
             <p style={{ whiteSpace: "pre-wrap" }}>{aiResult}</p>
             <button onClick={copyResult}>📋 Copy Text</button>
             <button onClick={handleGenerateAI} style={{ marginLeft: 8 }}>🔄 Regenerate</button>
+            <div style={{marginTop: 15, display: 'flex', gap: 8, flexWrap: 'wrap'}}>
+                <button onClick={() => setPrompt('Make it more beautiful and responsive')}>✨ Make it better</button>
+                <button onClick={() => setPrompt('Explain this to me like I am a beginner')}>🤔 Explain it</button>
+                <button onClick={() => setPrompt('Continue, make Part 2')}>➡️ Continue</button>
+                <button onClick={() => setPrompt('Turn this into a poem')}>🌹 Turn to Poem</button>
+           </div>
+          <p style={{marginTop: 10, fontStyle: 'italic'}}>What do you want next? Type it above and hit Generate 👆</p>
           </div>
         )}
 
