@@ -78,7 +78,7 @@ export default function App() {
     <div className="app">
       <nav className="navbar">
         <b>🤖 AI Helper</b>
-        <div className="nav-links"><span>Home</span><span>Generator</span><span>History</span></div>
+       <div className="nav-links"><span onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>Home</span><span onClick={() => document.getElementById("ai-box")?.scrollIntoView({ behavior: 'smooth' })} style={{ cursor: 'pointer' }}>Generator</span><span onClick={() => document.getElementById("history")?.scrollIntoView({ behavior: 'smooth' })} style={{ cursor: 'pointer' }}>History</span></div>
         <button onClick={() => { setName(""); localStorage.removeItem("aiUser"); }}>Hi, {name} • Logout</button>
       </nav>
 
@@ -129,8 +129,8 @@ export default function App() {
         )}
       </section>
 
-      <section className="history">
-        <h3>� history - Last 5 Generations for {name}</h3>
+      <section className="history" id="history">
+        <h3> history - Last 5 Generations for {name}</h3>
         {history.length === 0 && <p>No history yet. Generate something!</p>}
         {history.map((h, i) => (
           <div key={i} className="history-item"><b>{h.type}:</b> {h.prompt} <span>({h.time})</span><p>{h.result}...</p></div>
