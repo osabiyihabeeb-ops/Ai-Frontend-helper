@@ -105,10 +105,13 @@ export default function App() {
 
         <div className="ai-controls">
           <select value={aiType} onChange={e => setAiType(e.target.value)}>
+            <option value="code">💻 Code - Real HTML/CSS/JS</option>
+            <option value="poem">🌹 Poem - Real Poem</option>
+            <option value="novel">📖 Novel / Story</option>
+            <option value="text">✍️ Text / Headline</option>
             <option value="hero">Hero Section</option>
-            <option value="card">Cards / Services</option>
-            <option value="form">CTA / Form Text</option>
-            <option value="idea">Website Ideas</option>
+            <option value="card">Card Section</option>
+            <option value="form">Form Section</option>
           </select>
           <button onClick={handleGenerateAI} disabled={isGenerating}>{isGenerating ? "AI is thinking..." : "Generate with AI →"}</button>
         </div>
